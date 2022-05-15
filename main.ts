@@ -1,7 +1,8 @@
-let Lysnummer = 0
 let Poeng = 0
+let Lysnummer = 0
+let Repetisjoner = 4
 basic.forever(function () {
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < Repetisjoner; index++) {
         Lysnummer = randint(0, 3)
         if (Lysnummer == 0) {
             pins.digitalWritePin(DigitalPin.P0, 1)
@@ -21,5 +22,5 @@ basic.forever(function () {
             Poeng += 1
         }
     }
-    basic.showString("" + Poeng + "Poeng!")
+    basic.showString("" + Poeng + "Poeng av" + Repetisjoner + "mulige!")
 })
