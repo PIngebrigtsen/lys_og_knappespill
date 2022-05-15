@@ -1,13 +1,25 @@
-let LysRekke = [randint(0, 3)]
+let Lysnummer = 0
+let Poeng = 0
 basic.forever(function () {
-    let Lysnummer = 0
-    if (Lysnummer == 0) {
-        pins.digitalWritePin(DigitalPin.P0, 1)
-    } else if (Lysnummer == 1) {
-        pins.digitalWritePin(DigitalPin.P1, 1)
-    } else if (Lysnummer == 2) {
-        pins.digitalWritePin(DigitalPin.P2, 1)
-    } else {
-        pins.digitalWritePin(DigitalPin.P3, 1)
+    for (let index = 0; index < 4; index++) {
+        Lysnummer = randint(0, 3)
+        if (Lysnummer == 0) {
+            pins.digitalWritePin(DigitalPin.P0, 1)
+        } else if (Lysnummer == 1) {
+            pins.digitalWritePin(DigitalPin.P1, 1)
+        } else if (Lysnummer == 2) {
+            pins.digitalWritePin(DigitalPin.P2, 1)
+        }
+        basic.pause(1000)
+        pins.digitalWritePin(DigitalPin.P0, 0)
+        pins.digitalWritePin(DigitalPin.P1, 0)
+        pins.digitalWritePin(DigitalPin.P2, 0)
+        while (!(input.buttonIsPressed(Button.A) || input.buttonIsPressed(Button.B) || input.buttonIsPressed(Button.AB))) {
+        	
+        }
+        if (Lysnummer == 0 && input.buttonIsPressed(Button.A) || Lysnummer == 1 && input.buttonIsPressed(Button.B) || Lysnummer == 2 && input.buttonIsPressed(Button.AB)) {
+            Poeng += 1
+        }
     }
+    basic.showString("" + Poeng + "Poeng!")
 })
